@@ -1,9 +1,10 @@
+
 <template>
-    <div id="employee-details">
+    <div id="employee-details" className="table-wrapper table-responsive table-responsive{-sm|-md|-lg|-xl}   overflow-x:auto;">
       <p v-if="users.length < 1">
         No users
       </p>
-      <table v-else>
+      <table v-else className="table striped bordered hover"  responsive size="sm" w-auto="true">
         <thead>
           <tr>
             <th>Name</th>
@@ -40,6 +41,7 @@
   </template>
   
   <script>
+  import 'bootstrap/dist/css/bootstrap.css';
     export default {
       name: 'user-details',
       props: {

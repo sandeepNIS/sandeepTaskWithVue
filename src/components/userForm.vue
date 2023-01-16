@@ -1,6 +1,8 @@
 <template>
     <div id="user-form">
+       <center>
         <form @submit.prevent="handleSubmit" >
+            
             <label>User Name</label>
             <input 
                 ref="first"
@@ -34,7 +36,9 @@
             </p>
             <br/><br/>
             <button>Add User</button>
+            
         </form>
+    </center>
     </div>
 </template>
 
@@ -96,6 +100,19 @@ export default {
     form {
         margin-bottom: 2rem;
     }
+    form {
+    width: 300px;
+    border: 1px solid;
+    padding: 20px;
+  }
+  
+  @media only screen and (max-width: 360px) {
+    form {
+        width: 220px;
+        border: 2px solid;
+        padding: 20px;
+    }
+  }
     [class*='-message'] {
         font-weight: 500;
     }
