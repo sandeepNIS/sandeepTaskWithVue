@@ -1,0 +1,28 @@
+{
+  "name": "vue-app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "cd backend && cd routes && node app.js",
+    "client": "npm start vue-app",
+    "dev": "concurrently \"npm run server\" \" vite"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "bootstrap-vue": "^2.21.2",
+    "vue": "^3.2.45"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.20",
+    "vite": "^4.0.0"
+  },
+  "description": "This template should help get you started developing with Vue 3 in Vite.",
+  "main": "vite.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
