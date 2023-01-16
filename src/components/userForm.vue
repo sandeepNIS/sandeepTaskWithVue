@@ -11,6 +11,7 @@
                 v-model="user.username"
                 @focus="clearStatus"
                 @keypress="clearStatus" 
+                required
             />
             <br/>
             <label>User Email</label>
@@ -19,14 +20,16 @@
                 :class="{ 'has-error': submitting && isEmailValid }"
                 v-model="user.email"
                 @focus="clearStatus"
+                required
             />
             <br/>
-            <label>password</label>
+            <label>Password</label>
             <input 
                 type="password"
                 :class="{ 'has-error': submitting && isPasswordValid }"
                 v-model="user.password"
                 @focus="clearStatus"
+                required
             />
             <p v-if="error && submitting" class="error-message">
                 ❗Please fill out all required fields and valid email address
@@ -71,6 +74,7 @@ export default {
             this.user = {
                 username: '',
                 email: '',
+                password:''
                 // reg: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
             }
             this.error = false
@@ -97,9 +101,7 @@ export default {
 </script>
 
 <style scoped>
-    form {
-        margin-bottom: 2rem;
-    }
+  
     form {
     width: 300px;
     border: 1px solid;

@@ -1,6 +1,6 @@
 
 <template>
-    <div id="employee-details" className="table-wrapper table-responsive table-responsive{-sm|-md|-lg|-xl}   overflow-x:auto;">
+    <div id="user-details" className="table-wrapper table-responsive table-responsive{-sm|-md|-lg|-xl}   overflow-x:auto;">
       <p v-if="users.length < 1">
         No users
       </p>
@@ -25,7 +25,7 @@
             <td v-else>{{ user.email }}</td>
   
             <td v-if="editing === user.id">
-              <button @click="editEmployee(user)">Save</button>
+              <button @click="editUser(user)">Save</button>
               <button @click="cancelEdit(user)" class="muted-button">Cancel</button>
             </td>
   
@@ -39,9 +39,9 @@
       </table>
     </div>
   </template>
-  
+    
   <script>
-  import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
     export default {
       name: 'user-details',
       props: {
@@ -54,16 +54,16 @@
       },
       methods: {
         editMode(users) {
-          this.cachedEmployee = Object.assign({}, users)
+          this.cachedUser = Object.assign({}, users)
           this.editing = users.id
         },
-        cancelEdit(employee) {
-          Object.assign(employee, this.cachedEmployee)
+        cancelEdit(user) {
+          Object.assign(user, this.cachedUser)
           this.editing = null
         },
-        editEmployee(employee){
-          if(employee.username === '' || employee.email === '') return
-          this.$emit('edit:employee', employee.id, employee)
+        editUser(user){
+          if(user.username === '' || user.email === '') return
+          this.$emit('edit:user', user.id, user)
           this.editing = null        
         },
       }

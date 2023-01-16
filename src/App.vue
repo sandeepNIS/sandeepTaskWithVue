@@ -9,8 +9,8 @@
     <br/>
     <h1>User Details</h1>
     <user-details v-bind:users ="users"
-    @edit:employee="editEmployee"
-                      @delete:employee="deleteEmployee"
+    @edit:user="editUser"
+                      @delete:user="deleteUser"
     />
   </div>
 <!-- <template>
@@ -19,8 +19,6 @@
     <router-link to="/details">details</router-link>
   </div>
   <router-view/>
-
-
 </template> -->
   </template>
 
@@ -67,25 +65,25 @@ export default {
         console.error('Error occured while retrieving employees: ' +error);
       }
     },
-    async editEmployee(id, updatedEmployee) {
+    async editUser(id, updatedUser) {
       try {
         const response = await fetch (`http://localhost:3080/account/:${id}`, {
           method: 'PUT',
-          body: JSON.stringify(updatedEmployee),
+          body: JSON.stringify(updatedUser),
           headers: { "Content-type": "application/json; charset=UTF-8" } 
         });
         const data = await response.json()
-        this.users = this.users.map(employee => (employee.id === id ? data : employee))
+        this.users = this.users.map(user => (user.id === id ? data : user))
       } catch (error) {
         console.error('Error while editing: ', +error)
       }
     },
-    async deleteEmployee(id) {
+    async deleteUser(id) {
       try {
         await fetch (`http://localhost:3080/account/delete/:${id}`, {
           method: 'DELETE'
         });
-        this.users = this.users.filter(employee => employee.id !== id);
+        this.users = this.users.filter(user => user.id !== id);
       } catch (error) {
         console.error('Error while deleting: ', +error)
       }
@@ -107,16 +105,13 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
 /* #nav {
   padding: 30px;
 }
-
 #nav a {
   font-weight: bold;
   color: #2c3e50;
 }
-
 #nav a.router-link-exact-active {
   color: #42b983;
 } */
